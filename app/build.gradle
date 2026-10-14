@@ -1,0 +1,26 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'de.fufi.nafba'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'de.fufi.nafba'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    signingConfigs {
+        release {
+            if (System.getenv('NAFBA_KEYSTORE')) {
+                storeFile file(System.getenv('NAFBA_KEYSTORE'))
+                storePassword System.getenv('NAFBA_STORE_PASSWORD')
+                keyAlias 'nafba'
+                keyPassword System.getenv('NAFBA_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes { release { minifyEnabled false; signingConfig signingConfigs.release } }
+    lint { abortOnError true }
+}
+dependencies { testImplementation 'junit:junit:4.13.2' }
