@@ -1,13 +1,18 @@
 plugins { id 'com.android.application' }
 android {
     namespace 'de.fufi.nafba'
-    compileSdk 35
+    compileSdk 36
+    buildFeatures { buildConfig true }
     defaultConfig {
         applicationId 'de.fufi.nafba'
         minSdk 26
-        targetSdk 35
-        versionCode 1
-        versionName '1.0.0'
+        targetSdk 36
+        versionCode 2
+        versionName '2.0.0-beta.1'
+        def xiaomiAppId = providers.gradleProperty('xiaomiAppId').orElse('').get()
+        if (!(xiaomiAppId ==~ /[0-9]*/)) throw new GradleException('xiaomiAppId must contain digits only')
+        buildConfigField 'String', 'XIAOMI_APP_ID', '"' + xiaomiAppId + '"'
+        manifestPlaceholders = [xiaomiAppId: xiaomiAppId]
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     signingConfigs {
@@ -20,7 +25,21 @@ android {
             }
         }
     }
-    buildTypes { release { minifyEnabled false; signingConfig signingConfigs.release } }
+    buildTypes {
+        debug { manifestPlaceholders.xiaomiDebug = true }
+        release { minifyEnabled false; signingConfig signingConfigs.release; manifestPlaceholders.xiaomiDebug = false }
+    }
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.all {
+            ['http.proxyHost','http.proxyPort','https.proxyHost','https.proxyPort','javax.net.ssl.trustStore'].each { key ->
+                if (System.getProperty(key)) systemProperty key, System.getProperty(key)
+            }
+        }
+    }
     lint { abortOnError true }
 }
-dependencies { testImplementation 'junit:junit:4.13.2' }
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.16.1'
+}

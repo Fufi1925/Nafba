@@ -4,7 +4,7 @@
 
 Das Projekt wird auf `main` entwickelt. Repo-Beschreibung:
 
-> Native Android Dynamic Island mit iOS-inspirierter Glas-Optik, Akkuwarnungen und anpassbarer Position für POCO/Redmi.
+> Android-App mit Apple-inspirierter Glas-Tab-Leiste und nativer HyperIsland-/Live-Update-Anbindung. Ohne Overlay.
 
 Topics: `android`, `poco`, `redmi`, `dynamic-island`, `battery`, `java`, `glass-ui`.
 
@@ -26,11 +26,13 @@ Normale Builds und Pull Requests brauchen keine Secrets. Nur der Release-Job auf
 1. `versionCode` erhöhen und `versionName` in `app/build.gradle` aktualisieren.
 2. Changelog und `docs/RELEASE_NOTES.md` aktualisieren. Gerätetests dokumentieren.
 3. Tests, Lint und Build prüfen; Änderungen auf `main` committen und pushen.
-4. `git tag -a v1.0.0 -m 'Nafba V1.0.0'` und `git push origin v1.0.0`.
+4. Die passende Version taggen, z. B. `git tag -a v2.0.0-beta.1 -m 'Nafba Native Edition'` und `git push origin v2.0.0-beta.1`.
 5. Actions prüft den Code, baut die signierte APK und erstellt eine Vorabversion mit APK und SHA-256-Prüfsummen.
 6. Erst nach echten Gerätetests den Pre-release-Status aufheben.
 
 GitHub Actions muss im Repository erlaubt sein. Tags und Releases nicht nachträglich auf anderen Code umbiegen. Stattdessen eine neue Versionsnummer verwenden.
+
+Die Xiaomi-App-ID und offizielle Island-Freigabe sind von den APK-Signatur-Secrets unabhängig. Solange sie fehlen, muss ein Release die native Einschränkung ausdrücklich nennen. V1 ist ein historischer, verworfener Overlay-Ansatz; neue Nutzer zu V2 führen.
 
 ## Lokal signieren
 
@@ -41,14 +43,3 @@ export NAFBA_STORE_PASSWORD
 export NAFBA_KEY_PASSWORD="$NAFBA_STORE_PASSWORD"
 ./gradlew testDebugUnitTest lintDebug assembleRelease
 ```
-
-## Erstes Repo per GitHub CLI veröffentlichen
-
-Falls die verwendete Integration keine Repo-Erstellung unterstützt, kann der Eigentümer mit installiertem und angemeldetem `gh` das vorbereitete Projekt veröffentlichen:
-
-```sh
-gh auth login
-bash scripts/publish-v1.sh /pfad/zum/Nafba-v1.0.0.apk /pfad/zum/privaten/backup
-```
-
-Das Skript erstellt ein **öffentliches** Repo unter dem angemeldeten Account `Fufi1925`, setzt Beschreibung und Topics, lädt Code und Signatur-Secrets hoch, pusht `v1.0.0` und erstellt eine Vorabversion mit der bereitgestellten APK. Die öffentliche Sichtbarkeit ist eine bewusste Vorgabe des Skripts; alternativ `--public` im Skript vor der ersten Ausführung auf `--private` ändern. Private Dateien bleiben außerhalb von Git.

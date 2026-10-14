@@ -1,17 +1,21 @@
-# Gerätetest vor stabilem Release
+# Gerätetests · Native Edition
 
-Noch nicht durchgeführt. Modell, Android-Version und HyperOS/MIUI-Version dokumentieren.
+Noch offen. Ein Android-Render-Test beweist keine HyperOS-Unterstützung.
 
-- [ ] APK installieren, App öffnen, Berechtigungsdialog ablehnen: kein Absturz.
-- [ ] Overlay erlauben, Island aktivieren, App verlassen: Island sichtbar.
-- [ ] Breite/Position prüfen, Hoch- und Querformat sowie Kamerabereich testen.
-- [ ] Akku: 21 und 20 % keine Warnung; 19 und 0 % Warnung.
-- [ ] Laden unter 20 % zeigt Ladeanzeige; Abziehen stellt Warnung wieder her.
-- [ ] Warnung deaktivieren und andere Grenze wählen.
-- [ ] Animationen ausschalten; Vorschau und Overlay prüfen.
-- [ ] Sperren/Entsperren: Island ausgeblendet und danach wieder sichtbar.
-- [ ] Über Benachrichtigung und Schalter ausschalten: Overlay entfernt.
-- [ ] Overlay-Erlaubnis während Betrieb entziehen: kontrolliertes Ende.
-- [ ] Nach OS-Neustart bleibt Island aus und kann manuell aktiviert werden.
-- [ ] 30 Minuten Nutzung: Akkuverbrauch und HyperOS-Hintergrundbehandlung dokumentieren.
-- [ ] Update mit identischem Release-Schlüssel installieren, Einstellungen erhalten.
+Modell, Android-Version, vollständigen HyperOS-Build und Region erfassen. In Nafba können diese Angaben unter Einstellungen kopiert werden.
+
+- [ ] Signierte V2 als Update über V1 installieren; Einstellungen bleiben erhalten.
+- [ ] Keine Overlay-Erlaubnis wird angefordert; kein Fenster erscheint über anderen Apps.
+- [ ] Vier Tabs, Scrollen und Positionswechsel/Hoch-/Querformat prüfen.
+- [ ] Glas-Leiste, Schalter und reduzierte Bewegung auf dem tatsächlichen Display prüfen.
+- [ ] Geräteprüfung ohne Xiaomi-Provider bleibt stabil und zeigt „nicht bestätigt“.
+- [ ] Fehlende App-ID oder Gerätefreigabe lässt native Akkuwarnung deaktiviert.
+- [ ] Offiziell genehmigte Xiaomi-App-ID, Release-Signatur und Akku-/Timer-Szenario testen.
+- [ ] Auf Xiaomi: System-Island tatsächlich sichtbar; die Benachrichtigung allein reicht nicht als Beweis.
+- [ ] Auf API 36.1+: erlaubte Live-Update-Promotion und sichtbaren nativen Timer prüfen.
+- [ ] Timer 30/60/120 Sekunden, Beenden und Ablauf testen; Dienst endet korrekt.
+- [ ] Akku 21/20 % ohne Warnung, 19 % mit Warnung nach Xiaomi-Freigabe.
+- [ ] Laden unter der Grenze entfernt die native Akkuwarnung.
+- [ ] Benachrichtigungen verweigern/entziehen: keine Abstürze und kein Overlay-Ersatz.
+- [ ] Musik-/Anruf-/andere Vorlagen bleiben als interne Vorschau erkennbar.
+- [ ] HyperOS-Hintergrundbehandlung und Akkuverbrauch messen.

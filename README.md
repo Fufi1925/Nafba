@@ -1,56 +1,59 @@
-# Nafba
+# Nafba · Native Edition
 
-<img src="docs/icon.svg" width="96" alt="Nafba Icon">
+Eine Android-App mit Apple-inspirierter, schwebender Glas-Tab-Leiste und einer ausschließlich nativen Island-Anbindung.
 
-**Eine kleine Island für große Akku-Momente.**
+## V2
 
-Nafba ist eine native Android-App mit iOS-inspirierter Glas-Optik: ruhige Mint-Töne, feine Lichtkanten und sanfte Übergänge. Sie legt eine konfigurierbare Island über andere Apps und zeigt Akkuwarnungen sowie den Ladestatus. Entwickelt mit POCO- und Redmi-Geräten im Blick.
+- **Übersicht · Island · Aktivitäten · Einstellungen** als vier untere Tabs.
+- Helle Glas-Flächen, rosa Akzente, sanfte Übergänge und animierte Schalter.
+- Blur aus App-eigenen Inhalten; zusätzlicher Hardware-Blur ab Android 12.
+- Schwarze Vorschauen für Akku, Timer, Musik, Anruf, Navigation, Fokus, Aufnahme und Laden.
+- Dokumentierte Xiaomi-HyperIsland-Extras und Prüfung der lokalen Systemfreigabe.
+- Kurze Timer über öffentliche Android Live Updates ab API 36.1, sofern erlaubt.
+- Native Akkuwarnung unter 20 %, Grenze einstellbar, ausschließlich nach Xiaomi-Freigabe.
 
-## V1
+**Das frühere Overlay ist vollständig entfernt.** Keine `SYSTEM_ALERT_WINDOW`-Berechtigung und keine Fenster über anderen Apps. V1 bleibt nur als historischer Stand erhalten.
 
-- Schwebende Island mit kompakter und erweiterter Ansicht; Antippen öffnet die Akkuanzeige.
-- Low Battery Bar standardmäßig **unter 20 %**, frei einstellbar von 5 bis 50 %.
-- Ladeanzeige statt Akkuwarnung während des Ladens.
-- Breite, vertikale und horizontale Position einstellbar.
-- Live-Vorschau und Vorschau der Akkuwarnung.
-- Abschaltbare Animationen und eigenes Vektor-Icon.
-- Kein Konto, keine Werbung, keine Analyse und keine Internetberechtigung.
+## Tatsächlicher Funktionsumfang
 
-## Download und Installation
+| Funktion | Voraussetzung / Status |
+| --- | --- |
+| Tabs, Glas-Design, Einstellungen, Vorlagen | Android 8+; unabhängig von HyperIsland |
+| Eigene native Xiaomi-Island-Meldungen | Protokoll 3+, Geräteberechtigung und registrierte App-ID/Signatur/Szenario |
+| Kurzer Timer | Xiaomi-Freigabe oder Android 16 QPR2 / API 36.1+ mit Promotion-Erlaubnis |
+| Automatische native Akkuwarnung | Xiaomi-Freigabe; sonst bleibt der Schalter deaktiviert |
+| Musik, fremde Anrufe, Navigation, Fokus, Aufnahme und Laden | interne Design-Vorschauen; keine Übernahme fremder App-Ereignisse |
+| System-Island frei umgestalten oder verschieben | kein allgemeiner Styling-Zugriff implementiert |
 
-**[V1 herunterladen](https://github.com/Fufi1925/Nafba/releases/tag/v1.0.0)** · [Alle Releases](https://github.com/Fufi1925/Nafba/releases).
-Lade dort die signierte `Nafba-v1.0.0.apk` herunter; die automatisch angebotenen ZIP/TAR-Dateien sind Quellcode, keine Apps.
+**Die Beta enthält noch keine Xiaomi-App-ID und keine Xiaomi-Freigabe.** Eine vorhandene HyperIsland auf dem Handy allein schaltet Nafba nicht frei. Die App zeigt fehlende Unterstützung an und zeichnet niemals eine Ersatz-Island. Die Darstellung der nativen Benachrichtigungen entscheidet das System; sie muss auf dem tatsächlichen POCO-/Redmi-Gerät geprüft werden.
 
-1. Installiere die APK. Android fragt gegebenenfalls nach der Installation aus dieser Quelle.
-2. Öffne Nafba, aktiviere „Island aktivieren“ und erlaube das Anzeigen über anderen Apps.
-3. Kehre zurück und aktiviere die Island erneut. Erlaube die Benachrichtigung, um den aktiven Dienst bequem ausschalten zu können.
-4. Passe Abstand und Position an deine Frontkamera an.
+## Download
 
-**Anforderungen:** Android 8.0+ (API 26), ohne Root. V1 ist eine erste Vorabversion; ein physischer POCO-/Redmi-Test steht aus. Das genaue Gerätemodell ist noch nicht bekannt.
+[Releases und APKs](https://github.com/Fufi1925/Nafba/releases). Für das korrigierte Design die **V2 Native Edition** verwenden. V1 war der verworfene Overlay-Ansatz.
 
-## Grenzen
+1. V2-APK installieren oder V1 damit aktualisieren; der Release-Schlüssel bleibt identisch.
+2. Unter **Einstellungen → Native Verbindung** das Gerät prüfen.
+3. Für verfügbare native Aktivitäten Benachrichtigungen erlauben.
+4. Unter **Dein Gerät** Modell, Android-Version und Build kopieren, wenn Hilfe zur Unterstützung nötig ist.
 
-Nafba verändert nicht Androids Systemstatusleiste, Launcher oder Navigation. Das Overlay liegt unter geschützten Systemfenstern; Sperrbildschirm und sicherheitskritische Apps können es ausblenden. Glas ist hier eine gezeichnete Optik mit Verläufen und Lichtkanten, kein Echtzeit-Blur des Inhalts anderer Apps. Größe und Touch-Fläche des Overlays können Bedienelemente am oberen Bildschirmrand verdecken. Bei Problemen die Island ausschalten oder den Abstand erhöhen.
+## Screenshots der tatsächlichen Android-Ansichten
 
-Unter HyperOS/MIUI können zusätzliche Einstellungen für Hintergrundaktivität, Akkuverbrauch und schwebende Fenster nötig sein. Menübezeichnungen hängen von Modell und OS-Version ab. Nach Neustart oder Beenden durch das System wird die Island bewusst nicht automatisch gestartet; öffne Nafba erneut.
+<img src="docs/screenshots/overview.png" width="260" alt="Übersicht mit Glas-Tab-Leiste"> <img src="docs/screenshots/island.png" width="260" alt="Island-Vorlagen">
+
+Die Ansichten wurden mit Robolectric gerendert; sie sind keine Fotos eines POCO-Gerätetests.
 
 ## Entwicklung
 
-Java 17, Android SDK 35, Build Tools 35.0.0, Gradle 8.13, Android Gradle Plugin 8.10.1. Keine UI-Bibliotheken; native Views und Canvas.
+Java 17 · Gradle 8.13 · AGP 8.10.1 · compile/target SDK 36 · min SDK 26.
 
 ```sh
 ./gradlew testDebugUnitTest lintDebug assembleDebug
 ```
 
-Die Debug-APK ist ein separat signierter Entwicklungsbuild. Für Updates der veröffentlichten App den ursprünglichen Release-Schlüssel verwenden. Anleitung: [Release-Prozess](docs/RELEASING.md).
+Die Tests prüfen Akku-Grenzen, native Freigaben, die fehlende Overlay-Berechtigung, Tab-Navigation und die tatsächlichen Android-Views. Sie ersetzen keinen Hardware-Test.
 
-## Projekt
+Die offiziell genehmigte numerische Xiaomi-App-ID wird mit `-PxiaomiAppId=...` gesetzt. Eine ID ersetzt nicht die Signatur- und Szenariofreigabe. Keine Hidden-API- oder Permission-Bypass-Bibliotheken verwenden.
 
-- [Changelog](CHANGELOG.md)
-- [Datenschutz](PRIVACY.md)
-- [Mitmachen](CONTRIBUTING.md)
-- [Sicherheit](SECURITY.md)
-- [Gerätetest](docs/DEVICE_TESTS.md)
-- [MIT-Lizenz](LICENSE)
+[Native Anbindung und Primärquellen](docs/NATIVE_INTEGRATION.md) · [Validierung](docs/VALIDATION.md) · [Gerätetests](docs/DEVICE_TESTS.md) · [Releases](docs/RELEASING.md) · [Changelog](CHANGELOG.md) · [Datenschutz](PRIVACY.md) · [MIT-Lizenz](LICENSE)
 
-Nafba ist ein unabhängiges Projekt von Fufi1925; keine Verbindung zu Apple, Xiaomi oder POCO. iOS und Dynamic Island sind Produkt-/Markenbezeichnungen ihrer jeweiligen Rechteinhaber.
+Unabhängiges Projekt von Fufi1925. Keine Verbindung zu Apple oder Xiaomi. Die Gestaltung ist keine Portierung von Apples Liquid-Glass-Systemframework.

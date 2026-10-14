@@ -1,22 +1,24 @@
-# Nafba V1.0.0 — erste Vorabversion
+# Nafba 2.0.0-beta.1 · Native Edition
 
-Eine konfigurierbare Android-Island mit gezeichneter Glas-Optik, sanften Übergängen und Akku-Momenten.
+Die überarbeitete App mit vier schwebenden Glas-Tabs und schwarzen Island-Vorlagen.
 
-## Enthalten
+- Übersicht, Island, Aktivitäten und Einstellungen.
+- Helles Apple-inspiriertes Design, rosa Akzente, eigene Glas-/Blur-Flächen und sanfte Übergänge.
+- Der frühere Overlay-Code und die Overlay-Berechtigung sind vollständig entfernt.
+- Dokumentierte Xiaomi-Systembenachrichtigungen mit Freigabeprüfung; kein gezeichneter Ersatz.
+- Kurze native Timer über Xiaomi oder öffentliche Android Live Updates ab API 36.1, wenn erlaubt.
+- Akkuwarnungen nur nach bestätigter Xiaomi-Anbindung.
 
-- Low Battery Bar bei weniger als 20 %; Grenze konfigurierbar.
-- Akkustand, Ladeanzeige, Vorschau und abschaltbare Animationen.
-- Breite und Position passend zur Frontkamera einstellen.
-- Lokale Verarbeitung, kein Konto, keine Werbung und keine Internetberechtigung.
+## Grenzen dieser Beta
+
+Die Beta enthält noch keine Xiaomi-App-ID und keine Xiaomi-App-/Signatur-/Szenariofreigabe. Ohne diese ist die native Akkuwarnung deaktiviert. Ein vorhandener Kameraausschnitt oder eine vorhandene HyperIsland bestätigt keine Freigabe für Nafba.
+
+Musik, fremde Anrufe, Navigation, Fokus, Aufnahme und Laden sind interne Design-Vorschauen. Deren tatsächliche System-/Drittanbieter-Ereignisse werden nicht übernommen. Die System-Island kann nicht beliebig in ein Apple-Layout umgestaltet werden.
+
+Kein physischer POCO-/Redmi-Test wurde durchgeführt. Die konkrete Modell-/HyperOS-/Regionskombination ist noch unbekannt.
 
 ## Installation
 
-Die `.apk` herunterladen und installieren. In Nafba die Overlay-Erlaubnis erteilen und anschließend die Island aktivieren. Android 8.0 oder neuer ist erforderlich.
+Die V2-APK herunterladen und installieren. Derselbe Signierschlüssel ermöglicht ein Update über V1. In Einstellungen die native Verbindung prüfen. Es wird keine Overlay-Erlaubnis benötigt. V1 entspricht nicht dem korrigierten Native-only-Ziel.
 
-## Status
-
-V1 ist eine Vorabversion. Automatische Akku-Tests, Android Lint, APK-Build und Signaturprüfung werden vor Bereitstellung geprüft; tatsächliche Resultate stehen in `docs/VALIDATION.md`. Kein physischer POCO-/Redmi-Test wurde durchgeführt. Allgemeine Android-Unterstützung ist keine Garantie für ein bestimmtes unbekanntes Gerätemodell.
-
-## Bekannte Grenzen
-
-Die App ersetzt nicht die gesamte Systemoberfläche. Glas ist gezeichnet und verwendet kein Live-Blur anderer Apps. Das Overlay kann am oberen Rand Bedienelemente verdecken. Geschützte Apps oder Systemfenster können es ausblenden. HyperOS/MIUI kann den Dienst beenden. Nach Neustart ist erneutes manuelles Aktivieren nötig.
+Prüfresultate und Screenshots der tatsächlichen Android-Views stehen in `docs/VALIDATION.md` und `docs/screenshots`.

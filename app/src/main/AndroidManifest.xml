@@ -1,14 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
     <application android:label="Nafba" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher" android:theme="@style/AppTheme" android:allowBackup="false" android:dataExtractionRules="@xml/backup_rules" android:supportsRtl="true">
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
         </activity>
-        <service android:name=".IslandService" android:exported="false" android:foregroundServiceType="specialUse">
-            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-enabled persistent floating battery island, visible over other apps" />
+        <meta-data android:name="com.xiaomi.xms.APP_ID" android:value="${xiaomiAppId}" />
+        <meta-data android:name="com.xiaomi.xms.BUILD_TYPE_DEBUG" android:value="${xiaomiDebug}" />
+        <service android:name=".NativeSessionService" android:exported="false" android:foregroundServiceType="shortService|specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-enabled battery monitoring for authorized native Xiaomi HyperIsland notifications; never draws application windows" />
         </service>
     </application>
 </manifest>

@@ -1,7 +1,11 @@
-# Datenschutz
+# Datenschutz · Native Edition
 
-Nafba verarbeitet den vom Android-System gemeldeten Akkustand und Ladestatus lokal. Einstellungen werden im privaten App-Speicher gespeichert und bei Deinstallation entfernt. Es gibt keine Internetberechtigung, Server, Telemetrie, Werbe-SDKs oder Benutzerkonten.
+Nafba verarbeitet Akkustand, Ladestatus, Gerätemodell, Android-Version und lokale Systemfreigaben. Einstellungen liegen im privaten App-Speicher. Keine Konten, Werbung, Telemetrie oder Internetberechtigung.
 
-Die Overlay-Erlaubnis wird benötigt, um die Island über anderen Apps anzuzeigen. Der Vordergrunddienst hält die ausdrücklich aktivierte Island verfügbar. Die Benachrichtigungsberechtigung erlaubt die sichtbare Dienstmeldung. Nafba liest weder Benachrichtigungsinhalte noch Kontakte, Dateien oder Bildschirminhalte. Kein Accessibility-Dienst wird verwendet.
+Der Glas-Hintergrund stammt ausschließlich aus Nafbas Ansichten. Die App zeichnet nicht über anderen Apps, liest keine anderen Bildschirme und nutzt keinen Accessibility- oder Notification-Listener-Dienst. Musik, fremde Anrufe und Aufnahme werden nicht ausgelesen; diese Ansichten sind Design-Vorschauen.
 
-GitHub ist nur für den optionalen Download und die Projektverwaltung zuständig. Bitte keine persönlichen Daten in öffentliche Fehlerberichte aufnehmen.
+Benachrichtigungen und Vordergrunddienste werden nur für ausdrücklich aktivierte Aktivitäten verwendet. Timer enden spätestens nach zwei Minuten. Die optionale Akku-Beobachtung ist nur bei bestätigter Xiaomi-Anbindung verfügbar und jederzeit beendbar.
+
+Die Xiaomi-Abfrage übermittelt den eigenen Paketnamen nur an einen lokalen Systemanbieter. Die Beta enthält keine registrierte Xiaomi-App-ID und sendet keine Daten an Xiaomi-Server.
+
+„Geräteinfos kopieren“ schreibt die Informationen nur in die Zwischenablage. Sie werden nicht automatisch an GitHub oder Dritte übertragen.

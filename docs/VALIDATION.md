@@ -1,28 +1,29 @@
-# V1-Validierung
+# V2 Native Edition · Validierung
 
-Stand: 14. Oktober 2026. Geprüft im Build-Container, ohne Emulator oder physisches Telefon.
+Stand: 14. Oktober 2026. Automatisch im Build-Container geprüft; kein physischer POCO-/Redmi-Test.
 
 | Prüfung | Ergebnis |
 | --- | --- |
-| Sauberer Android-Release-Build | bestanden |
-| BatteryState Unit-Tests | 4 bestanden, 0 Fehler |
-| Android Lint Debug | 0 Fehler, 4 Warnungen |
-| Release Lint Vital | bestanden |
-| APK-Signatur mit Android apksigner | gültig, APK Signature Scheme v2 |
-| Paket-ID / Version | `de.fufi.nafba` / `1.0.0` (Code 1) |
-| Mindest- / Ziel-API | 26 / 35 |
-| XML und Veröffentlichungsskript | Syntax geprüft |
-| POCO-/Redmi-Gerätetest | ausstehend |
-| GitHub-Repo und V1-Release | veröffentlicht: `Fufi1925/Nafba`, Tag `v1.0.0`, signierte APK und SHA-256-Prüfsumme |
+| Sauberer signierter Release-Build | bestanden |
+| Akku-Grenzwerte | 4 Tests bestanden |
+| Native Freigabe-Logik, inklusive API 36.0/36.1 | 3 Tests bestanden |
+| Vier Tabs, Wiederherstellung, Berechtigungen und View-Render | 3 Robolectric-Tests bestanden |
+| Android Lint | 0 Fehler, 11 Warnungen |
+| APK-Signatur | gültig, identischer V1-Release-Schlüssel |
+| APK-Overlay-Berechtigung | nicht enthalten |
+| Native Xiaomi-Gerätedarstellung | ausstehend; keine App-ID/Freigabe enthalten |
+| Native Live-Update-Promotion auf Hardware | ausstehend |
 
-Die laufenden GitHub-Prüfungen und ihre Ergebnisse sind unter [Actions](https://github.com/Fufi1925/Nafba/actions) sichtbar. Signierte automatische Releases benötigen die in `RELEASING.md` beschriebenen privaten Secrets; bis zur Ersteinrichtung ist dieser Job deaktiviert.
+Die Screenshots in `docs/screenshots` zeigen tatsächliche Android-Views, gerendert mit Robolectric/Android 15 bei 393 × 852 dp. Sie sind keine Gerätefotos und bestätigen weder HyperIsland noch die Hardware-Blur-Leistung. Der Renderer bestätigt Layout und Interaktion. Timer, Akkuwarnung und Systemdarstellung benötigen zusätzlich die Hardware-Checkliste.
 
-Build-Aufruf: `gradle clean testDebugUnitTest lintDebug assembleRelease` mit Gradle 8.13 und Java 17. Die Gradle-Warnung über die kommende Version 9 betrifft nicht diesen gepinnten Build.
+Build: `gradle clean testDebugUnitTest lintDebug assembleRelease` mit Java 17, Gradle 8.13 und compile/target SDK 36.
 
-APK SHA-256:
-`e37b20ffa9feb0d62edcf20b15b01921f397e152d179b9d0fb93d9637d6efde8`
+APK: `Nafba-v2.0.0-beta.1.apk`.
 
-Öffentlicher Signierzertifikat-Fingerabdruck SHA-256:
+SHA-256:
+`bd426396551b08db6678dc86b01288d5c9fc413ddc14213157179231d3e2f692`
+
+Signierzertifikat SHA-256:
 `a36c504862bd5b09125edf60bec0d18dfef20a6383664eefc6f2eea524846350`
 
-Die automatischen Prüfungen bestätigen den Build und die Akku-Logik. Sie beweisen weder die visuelle Qualität auf einem bestimmten Display noch die Laufzeit-Kompatibilität mit einem unbekannten POCO-/Redmi-Modell. Dafür die Checkliste in `DEVICE_TESTS.md` verwenden.
+Die vorhandenen Lint-Warnungen sind vorwiegend Versions-, Lokalisierungs-, Icon-, Zeichen- und Backup-Hinweise. Sie sind keine bestandenen Hardware-/Freigabetests.
