@@ -18,7 +18,7 @@ Nafba ist eine native Android-App mit iOS-inspirierter Glas-Optik: ruhige Mint-T
 
 ## Download und Installation
 
-Nach Veröffentlichung: [GitHub Releases](https://github.com/Fufi1925/Nafba/releases).
+**[V1 herunterladen](https://github.com/Fufi1925/Nafba/releases/tag/v1.0.0)** · [Alle Releases](https://github.com/Fufi1925/Nafba/releases).
 Lade dort die signierte `Nafba-v1.0.0.apk` herunter; die automatisch angebotenen ZIP/TAR-Dateien sind Quellcode, keine Apps.
 
 1. Installiere die APK. Android fragt gegebenenfalls nach der Installation aus dieser Quelle.

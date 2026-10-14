@@ -13,7 +13,9 @@ Stand: 14. Oktober 2026. Geprüft im Build-Container, ohne Emulator oder physisc
 | Mindest- / Ziel-API | 26 / 35 |
 | XML und Veröffentlichungsskript | Syntax geprüft |
 | POCO-/Redmi-Gerätetest | ausstehend |
-| GitHub-Repo, CI-Ausführung und Release | noch nicht veröffentlicht |
+| GitHub-Repo und V1-Release | veröffentlicht: `Fufi1925/Nafba`, Tag `v1.0.0`, signierte APK und SHA-256-Prüfsumme |
+
+Die laufenden GitHub-Prüfungen und ihre Ergebnisse sind unter [Actions](https://github.com/Fufi1925/Nafba/actions) sichtbar. Signierte automatische Releases benötigen die in `RELEASING.md` beschriebenen privaten Secrets; bis zur Ersteinrichtung ist dieser Job deaktiviert.
 
 Build-Aufruf: `gradle clean testDebugUnitTest lintDebug assembleRelease` mit Gradle 8.13 und Java 17. Die Gradle-Warnung über die kommende Version 9 betrifft nicht diesen gepinnten Build.
 
