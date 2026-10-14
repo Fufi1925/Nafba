@@ -17,6 +17,8 @@ Die V1-APK verwendet einen privaten Release-Schlüssel. Der separat bereitgestel
 - `NAFBA_KEY_PASSWORD`: dasselbe Kennwort.
 - Alias: `nafba`.
 
+Nach Einrichten der Secrets die Repository-Variable `NAFBA_RELEASE_SIGNING_READY` auf `true` setzen. Bis dahin laufen nur Tests und Debug-Builds; der automatische signierte Release-Job wird übersprungen. Die erste geprüfte V1-APK kann manuell als Release-Asset veröffentlicht werden.
+
 Normale Builds und Pull Requests brauchen keine Secrets. Nur der Release-Job auf Versionstags erhält sie. Fehlen sie, bricht er ab, statt eine anders signierte APK zu veröffentlichen.
 
 ## Release erstellen
